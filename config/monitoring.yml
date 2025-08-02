@@ -1,0 +1,479 @@
+# Universal AI Development Platform - Monitoring Configuration
+# Comprehensive monitoring for platform health, adaptation tracking, and user analytics
+
+version: "1.0.0"
+last_updated: "2025-01-01"
+
+# Global monitoring settings
+global:
+  enabled: true
+  log_level: "INFO"
+  metrics_interval: 60  # seconds
+  health_check_interval: 30  # seconds
+  retention_period: "30d"
+  
+  # Output destinations
+  outputs:
+    console: true
+    file: true
+    metrics_endpoint: true
+    
+  # Data collection
+  collect_system_metrics: true
+  collect_application_metrics: true
+  collect_user_analytics: false  # Privacy-first approach
+  
+# Adaptation monitoring
+adaptation:
+  # Feature discovery monitoring
+  feature_discovery:
+    enabled: true
+    metrics:
+      - "features_discovered_count"
+      - "discovery_latency"
+      - "source_availability"
+      - "discovery_errors"
+    
+    alerts:
+      no_discoveries_24h:
+        enabled: true
+        threshold: 0
+        severity: "warning"
+        message: "No new features discovered in 24 hours"
+      
+      high_discovery_errors:
+        enabled: true
+        threshold: 5
+        severity: "error"
+        message: "High number of discovery errors detected"
+      
+      source_unavailable:
+        enabled: true
+        threshold: 3  # sources
+        severity: "warning"
+        message: "Multiple discovery sources unavailable"
+  
+  # Compatibility analysis monitoring
+  compatibility:
+    enabled: true
+    metrics:
+      - "compatibility_analyses_count"
+      - "compatibility_analysis_duration"
+      - "compatibility_scores_distribution"
+      - "integration_success_rate"
+    
+    alerts:
+      low_compatibility_rate:
+        enabled: true
+        threshold: 0.3  # 30%
+        severity: "warning"
+        message: "Low compatibility rate for discovered features"
+      
+      analysis_timeout:
+        enabled: true
+        threshold: 300  # seconds
+        severity: "error"
+        message: "Compatibility analysis taking too long"
+  
+  # Integration monitoring
+  integration:
+    enabled: true
+    metrics:
+      - "integrations_attempted"
+      - "integrations_successful"
+      - "integration_duration"
+      - "rollback_count"
+    
+    alerts:
+      integration_failure:
+        enabled: true
+        threshold: 0.8  # 80% success rate
+        severity: "error"
+        message: "High integration failure rate"
+      
+      rollback_triggered:
+        enabled: true
+        threshold: 1
+        severity: "warning"
+        message: "Integration rollback triggered"
+
+# Platform health monitoring
+platform_health:
+  # System resources
+  system:
+    enabled: true
+    metrics:
+      - "cpu_usage_percent"
+      - "memory_usage_percent"
+      - "disk_usage_percent"
+      - "network_io"
+      - "open_file_descriptors"
+    
+    alerts:
+      high_cpu:
+        enabled: true
+        threshold: 80  # percent
+        severity: "warning"
+        message: "High CPU usage detected"
+      
+      high_memory:
+        enabled: true
+        threshold: 85  # percent
+        severity: "warning"
+        message: "High memory usage detected"
+      
+      low_disk_space:
+        enabled: true
+        threshold: 90  # percent
+        severity: "error"
+        message: "Low disk space available"
+  
+  # Application health
+  application:
+    enabled: true
+    metrics:
+      - "request_count"
+      - "request_duration"
+      - "error_rate"
+      - "active_connections"
+      - "queue_length"
+    
+    health_checks:
+      database:
+        enabled: true
+        endpoint: "/health/database"
+        timeout: 5
+        interval: 30
+      
+      external_apis:
+        enabled: true
+        endpoint: "/health/external"
+        timeout: 10
+        interval: 60
+      
+      feature_discovery:
+        enabled: true
+        endpoint: "/health/discovery"
+        timeout: 15
+        interval: 120
+    
+    alerts:
+      high_error_rate:
+        enabled: true
+        threshold: 0.05  # 5%
+        severity: "error"
+        message: "High error rate detected"
+      
+      slow_requests:
+        enabled: true
+        threshold: 2000  # milliseconds
+        severity: "warning"
+        message: "Slow request response times"
+
+# Agent orchestration monitoring
+agent_orchestration:
+  enabled: true
+  
+  # Agent performance
+  agent_metrics:
+    - "agent_execution_count"
+    - "agent_execution_duration"
+    - "agent_success_rate"
+    - "agent_queue_length"
+    - "concurrent_agents"
+  
+  # Workflow monitoring
+  workflow_metrics:
+    - "workflow_completion_rate"
+    - "workflow_duration"
+    - "workflow_step_failures"
+    - "resource_utilization"
+  
+  alerts:
+    agent_failure:
+      enabled: true
+      threshold: 0.9  # 90% success rate
+      severity: "warning"
+      message: "Agent execution failure rate high"
+    
+    workflow_timeout:
+      enabled: true
+      threshold: 1800  # 30 minutes
+      severity: "error"
+      message: "Workflow execution timeout"
+    
+    queue_backlog:
+      enabled: true
+      threshold: 50  # queued items
+      severity: "warning"
+      message: "High number of queued agent tasks"
+
+# Analysis and intelligence monitoring
+analysis:
+  enabled: true
+  
+  # Project analysis
+  project_analysis:
+    metrics:
+      - "analyses_completed"
+      - "analysis_duration"
+      - "patterns_detected"
+      - "recommendations_generated"
+    
+    alerts:
+      analysis_failure:
+        enabled: true
+        threshold: 0.95  # 95% success rate
+        severity: "warning"
+        message: "Project analysis failure rate high"
+  
+  # Pattern recognition
+  pattern_recognition:
+    metrics:
+      - "patterns_analyzed"
+      - "pattern_confidence_scores"
+      - "learning_accuracy"
+      - "model_drift"
+    
+    alerts:
+      low_confidence:
+        enabled: true
+        threshold: 0.6  # 60% confidence
+        severity: "warning"
+        message: "Low confidence in pattern recognition"
+
+# User experience monitoring
+user_experience:
+  enabled: true
+  privacy_compliant: true  # No personal data collection
+  
+  # Usage patterns (anonymized)
+  usage_metrics:
+    - "command_usage_frequency"
+    - "feature_adoption_rate"
+    - "error_encounter_rate"
+    - "session_duration"
+  
+  # Performance from user perspective
+  user_performance:
+    - "command_response_time"
+    - "cli_startup_time"
+    - "project_creation_time"
+    - "analysis_completion_time"
+  
+  alerts:
+    poor_user_experience:
+      enabled: true
+      threshold: 10000  # 10 seconds
+      severity: "warning"
+      message: "Slow user experience detected"
+
+# Logging configuration
+logging:
+  # Log levels per component
+  levels:
+    root: "INFO"
+    adaptation: "INFO"
+    orchestration: "INFO"
+    analysis: "DEBUG"
+    cli: "INFO"
+    monitoring: "WARNING"
+  
+  # Log formatters
+  formatters:
+    structured:
+      format: "json"
+      fields:
+        - "timestamp"
+        - "level"
+        - "component"
+        - "message"
+        - "context"
+        - "correlation_id"
+    
+    human_readable:
+      format: "text"
+      template: "[{timestamp}] {level} {component}: {message}"
+  
+  # Log outputs
+  handlers:
+    console:
+      enabled: true
+      formatter: "human_readable"
+      level: "INFO"
+    
+    file:
+      enabled: true
+      formatter: "structured"
+      level: "DEBUG"
+      path: "logs/uai.log"
+      rotation: "daily"
+      retention: "30d"
+    
+    monitoring:
+      enabled: true
+      formatter: "structured"
+      level: "WARNING"
+      endpoint: "http://localhost:9090/metrics"
+
+# Metrics collection
+metrics:
+  # Prometheus-compatible metrics
+  prometheus:
+    enabled: true
+    port: 9090
+    path: "/metrics"
+    
+    # Custom metrics
+    custom_metrics:
+      - name: "uai_feature_discoveries_total"
+        type: "counter"
+        description: "Total number of features discovered"
+        labels: ["source", "category"]
+      
+      - name: "uai_compatibility_score"
+        type: "histogram"
+        description: "Compatibility analysis scores"
+        labels: ["feature_type"]
+        buckets: [0.1, 0.3, 0.5, 0.7, 0.9, 1.0]
+      
+      - name: "uai_agent_execution_duration"
+        type: "histogram"
+        description: "Agent execution duration in seconds"
+        labels: ["agent_type", "workflow"]
+        buckets: [1, 5, 10, 30, 60, 300, 600]
+      
+      - name: "uai_project_analysis_duration"
+        type: "histogram"
+        description: "Project analysis duration in seconds"
+        labels: ["project_type", "analysis_depth"]
+        buckets: [1, 5, 10, 30, 60]
+  
+  # Custom metric collection
+  collection:
+    enabled: true
+    interval: 30  # seconds
+    batch_size: 100
+    
+    # Metric retention
+    retention:
+      raw_metrics: "7d"
+      aggregated_metrics: "90d"
+      alerts: "30d"
+
+# Alerting configuration
+alerting:
+  enabled: true
+  
+  # Alert channels
+  channels:
+    console:
+      enabled: true
+      level: "WARNING"
+    
+    file:
+      enabled: true
+      path: "logs/alerts.log"
+      level: "ERROR"
+    
+    webhook:
+      enabled: false
+      url: "https://hooks.slack.com/services/..."
+      level: "ERROR"
+  
+  # Alert rules
+  rules:
+    # Platform health
+    - name: "platform_unhealthy"
+      condition: "health_score < 0.8"
+      severity: "error"
+      message: "Platform health score below threshold"
+    
+    # Adaptation issues
+    - name: "adaptation_stalled"
+      condition: "hours_since_last_adaptation > 48"
+      severity: "warning"
+      message: "No adaptation activity in 48 hours"
+    
+    # Resource constraints
+    - name: "resource_exhaustion"
+      condition: "cpu_usage > 90 OR memory_usage > 95"
+      severity: "critical"
+      message: "System resources critically low"
+  
+  # Alert suppression
+  suppression:
+    enabled: true
+    duplicate_window: "5m"  # Suppress duplicate alerts for 5 minutes
+    maintenance_mode: false
+
+# Data retention and cleanup
+data_management:
+  # Automatic cleanup
+  cleanup:
+    enabled: true
+    schedule: "daily"
+    
+    # Retention policies
+    retention:
+      logs: "30d"
+      metrics: "90d"
+      alerts: "180d"
+      adaptation_history: "1y"
+      analysis_results: "6m"
+  
+  # Data export
+  export:
+    enabled: false
+    format: "json"
+    compression: true
+    encryption: true
+
+# Privacy and security
+privacy:
+  # Data anonymization
+  anonymization:
+    enabled: true
+    user_data: true
+    project_data: false  # Keep project analysis data
+  
+  # Data encryption
+  encryption:
+    at_rest: true
+    in_transit: true
+    algorithm: "AES-256-GCM"
+  
+  # Access control
+  access_control:
+    monitoring_dashboard: "admin"
+    metrics_endpoint: "authenticated"
+    alert_configuration: "admin"
+
+# Integration with external monitoring
+external_integrations:
+  # Prometheus
+  prometheus:
+    enabled: false
+    endpoint: "http://localhost:9090"
+    scrape_interval: "30s"
+  
+  # Grafana
+  grafana:
+    enabled: false
+    dashboard_url: "http://localhost:3000"
+    api_key: "${GRAFANA_API_KEY}"
+  
+  # Datadog
+  datadog:
+    enabled: false
+    api_key: "${DATADOG_API_KEY}"
+    tags:
+      - "environment:development"
+      - "service:universal-ai-dev-platform"
+  
+  # Sentry
+  sentry:
+    enabled: false
+    dsn: "${SENTRY_DSN}"
+    environment: "development"
+    traces_sample_rate: 0.1

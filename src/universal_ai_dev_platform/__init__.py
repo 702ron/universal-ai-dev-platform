@@ -13,19 +13,15 @@ __license__ = "MIT"
 from .core.intelligence import ProjectIntelligence
 from .core.orchestration import AgentOrchestrator
 from .core.adaptation import AdaptationEngine
-from .core.prediction import PredictiveIntelligence
 
 # Main interfaces
-from .analysis.project_scanner import UniversalProjectAnalyzer
+from .analysis import UniversalProjectAnalyzer
 from .workflows.initialization import ProjectInitializer
-from .agents.coordination import AgentCoordinator
 
 __all__ = [
     "ProjectIntelligence",
     "AgentOrchestrator", 
     "AdaptationEngine",
-    "PredictiveIntelligence",
     "UniversalProjectAnalyzer",
     "ProjectInitializer",
-    "AgentCoordinator",
 ]

@@ -1,0 +1,52 @@
+# Testing dependencies for Universal AI Development Platform
+
+# Core testing framework
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+pytest-timeout>=2.1.0
+
+# Test utilities
+pytest-html>=3.2.0
+pytest-json-report>=1.5.0
+pytest-xdist>=3.3.0  # Parallel test execution
+pytest-benchmark>=4.0.0  # Performance testing
+
+# Mocking and fixtures
+responses>=0.23.0
+httpx>=0.24.0  # For async HTTP testing
+aioresponses>=0.7.0  # Mock async HTTP requests
+
+# Code quality and coverage
+coverage[toml]>=7.2.0
+pytest-cov>=4.1.0
+
+# Test data and factories
+factory-boy>=3.3.0
+faker>=19.0.0
+
+# Performance testing
+pytest-benchmark>=4.0.0
+memory-profiler>=0.61.0
+
+# Security testing
+bandit>=1.7.5
+safety>=2.3.0
+
+# Load testing (optional)
+locust>=2.15.0
+
+# Snapshot testing
+syrupy>=4.0.0
+
+# Property-based testing
+hypothesis>=6.82.0
+
+# Database testing (if needed)
+pytest-postgresql>=5.0.0
+pytest-redis>=3.0.0
+
+# Environment testing
+pytest-env>=0.8.0
+python-dotenv>=1.0.0

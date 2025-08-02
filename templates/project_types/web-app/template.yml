@@ -1,0 +1,175 @@
+name: "Modern Web Application"
+description: "Full-stack web application with modern tooling and best practices"
+category: "web"
+type: "web-app"
+version: "1.0.0"
+
+# Supported technology stacks
+tech_stacks:
+  react-typescript:
+    name: "React + TypeScript"
+    frontend: "react"
+    language: "typescript"
+    backend: "node"
+    database: "postgresql"
+    default_features: ["auth", "routing", "state-management", "testing"]
+  
+  vue-typescript:
+    name: "Vue 3 + TypeScript"
+    frontend: "vue"
+    language: "typescript"
+    backend: "node"
+    database: "postgresql"
+    default_features: ["auth", "routing", "pinia", "testing"]
+  
+  nextjs-full-stack:
+    name: "Next.js Full-Stack"
+    frontend: "nextjs"
+    language: "typescript"
+    backend: "nextjs"
+    database: "postgresql"
+    default_features: ["auth", "api-routes", "ssg", "ssr", "testing"]
+
+# Available features
+features:
+  auth:
+    name: "Authentication"
+    description: "User authentication and authorization"
+    dependencies: ["database"]
+    files: ["auth/", "middleware/auth.ts"]
+  
+  payments:
+    name: "Payment Processing"
+    description: "Stripe payment integration"
+    dependencies: ["auth"]
+    files: ["payments/", "api/payments/"]
+  
+  real-time:
+    name: "Real-time Features"
+    description: "WebSocket support for real-time updates"
+    dependencies: []
+    files: ["websocket/", "hooks/useWebSocket.ts"]
+  
+  testing:
+    name: "Testing Setup"
+    description: "Comprehensive testing with Jest and Testing Library"
+    dependencies: []
+    files: ["tests/", "__tests__/", "jest.config.js"]
+  
+  ci-cd:
+    name: "CI/CD Pipeline"
+    description: "GitHub Actions workflow"
+    dependencies: []
+    files: [".github/workflows/"]
+
+# Deployment options
+deployment:
+  vercel:
+    name: "Vercel"
+    config_files: ["vercel.json"]
+    env_vars: ["VERCEL_TOKEN"]
+  
+  netlify:
+    name: "Netlify"
+    config_files: ["netlify.toml"]
+    env_vars: ["NETLIFY_AUTH_TOKEN"]
+  
+  aws:
+    name: "AWS"
+    config_files: ["aws/", "serverless.yml"]
+    env_vars: ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
+
+# Project structure
+structure:
+  base:
+    - "src/"
+    - "public/"
+    - "package.json"
+    - "tsconfig.json"
+    - "README.md"
+    - ".gitignore"
+    - ".env.example"
+  
+  react:
+    - "src/components/"
+    - "src/pages/"
+    - "src/hooks/"
+    - "src/utils/"
+    - "src/types/"
+    - "src/styles/"
+  
+  api:
+    - "src/api/"
+    - "src/lib/"
+    - "src/middleware/"
+    - "prisma/"
+
+# Dependencies
+dependencies:
+  base:
+    - "typescript"
+    - "eslint"
+    - "prettier"
+    - "@types/node"
+  
+  react:
+    - "react"
+    - "react-dom"
+    - "@types/react"
+    - "@types/react-dom"
+    - "vite"
+  
+  vue:
+    - "vue"
+    - "@vitejs/plugin-vue"
+    - "vite"
+  
+  nextjs:
+    - "next"
+    - "react"
+    - "react-dom"
+  
+  auth:
+    - "next-auth"
+    - "bcryptjs"
+    - "jsonwebtoken"
+  
+  database:
+    - "prisma"
+    - "@prisma/client"
+    - "pg"
+    - "@types/pg"
+
+# Best practices configuration
+best_practices:
+  code_quality:
+    - "ESLint configuration with strict rules"
+    - "Prettier for consistent formatting"
+    - "TypeScript strict mode"
+    - "Pre-commit hooks with Husky"
+  
+  security:
+    - "Environment variable validation"
+    - "Input sanitization"
+    - "CORS configuration"
+    - "Rate limiting"
+  
+  performance:
+    - "Bundle optimization"
+    - "Image optimization"
+    - "Code splitting"
+    - "Lazy loading"
+  
+  testing:
+    - "Unit tests with Jest"
+    - "Integration tests"
+    - "E2E tests with Playwright"
+    - "Test coverage reporting"
+
+# Documentation templates
+documentation:
+  - "README.md with setup instructions"
+  - "API documentation"
+  - "Component documentation"
+  - "Deployment guide"
+  - "Contributing guidelines"

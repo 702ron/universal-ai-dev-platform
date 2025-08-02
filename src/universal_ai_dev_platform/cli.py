@@ -20,7 +20,7 @@ from rich.table import Table
 from rich.panel import Panel
 from rich.syntax import Syntax
 
-from .analysis.project_scanner.universal_analyzer import UniversalProjectAnalyzer
+from .analysis import UniversalProjectAnalyzer
 from .workflows.initialization import ProjectInitializer
 from .core.orchestration import AgentOrchestrator
 from .core.intelligence import ProjectIntelligence

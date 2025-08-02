@@ -15,9 +15,19 @@ from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple, Any
 from collections import defaultdict
 
-import tree_sitter
-from tree_sitter import Language, Parser
-import ast_grep
+# Optional advanced parsing dependencies
+try:
+    import tree_sitter
+    from tree_sitter import Language, Parser
+    TREE_SITTER_AVAILABLE = True
+except ImportError:
+    TREE_SITTER_AVAILABLE = False
+
+try:
+    import ast_grep
+    AST_GREP_AVAILABLE = True
+except ImportError:
+    AST_GREP_AVAILABLE = False
 from packaging import version
 
 logger = logging.getLogger(__name__)

@@ -46,12 +46,14 @@ class WorkflowSpecification:
     # Task configuration
     tasks: List[Dict[str, Any]]
     dependencies: Dict[str, List[str]]
-    timeout: Optional[int] = None
     
     # Agent configuration
     required_agents: List[str]
     preferred_agents: List[str]
     agent_constraints: Dict[str, Any]
+    
+    # Optional configuration (must come after required fields)
+    timeout: Optional[int] = None
 
 
 @dataclass

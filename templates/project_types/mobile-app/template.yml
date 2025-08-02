@@ -1,0 +1,322 @@
+name: "Mobile Application"
+description: "Cross-platform and native mobile applications"
+category: "mobile"
+type: "mobile-app"
+version: "1.0.0"
+
+# Supported technology stacks
+tech_stacks:
+  react-native-expo:
+    name: "React Native + Expo"
+    framework: "react-native"
+    platform: "cross-platform"
+    language: "typescript"
+    toolchain: "expo"
+    default_features: ["navigation", "auth", "push-notifications", "testing"]
+  
+  react-native-cli:
+    name: "React Native CLI"
+    framework: "react-native"
+    platform: "cross-platform"
+    language: "typescript"
+    toolchain: "react-native-cli"
+    default_features: ["navigation", "auth", "native-modules", "testing"]
+  
+  flutter:
+    name: "Flutter"
+    framework: "flutter"
+    platform: "cross-platform"
+    language: "dart"
+    toolchain: "flutter"
+    default_features: ["navigation", "auth", "state-management", "testing"]
+  
+  ios-native:
+    name: "iOS Native (Swift)"
+    framework: "uikit"
+    platform: "ios"
+    language: "swift"
+    toolchain: "xcode"
+    default_features: ["navigation", "auth", "coredata", "testing"]
+  
+  android-native:
+    name: "Android Native (Kotlin)"
+    framework: "jetpack-compose"
+    platform: "android"
+    language: "kotlin"
+    toolchain: "android-studio"
+    default_features: ["navigation", "auth", "room", "testing"]
+
+# Available features
+features:
+  navigation:
+    name: "Navigation"
+    description: "Screen navigation and routing"
+    dependencies: []
+    files: ["navigation/", "screens/"]
+  
+  auth:
+    name: "Authentication"
+    description: "User authentication with social login"
+    dependencies: []
+    files: ["auth/", "services/auth.*"]
+  
+  push-notifications:
+    name: "Push Notifications"
+    description: "Firebase Cloud Messaging integration"
+    dependencies: []
+    files: ["notifications/", "services/notifications.*"]
+  
+  offline-support:
+    name: "Offline Support"
+    description: "Offline data storage and synchronization"
+    dependencies: ["database"]
+    files: ["offline/", "storage/"]
+  
+  camera:
+    name: "Camera Integration"
+    description: "Camera and photo capture functionality"
+    dependencies: []
+    files: ["camera/", "components/Camera.*"]
+  
+  geolocation:
+    name: "Geolocation"
+    description: "GPS location services"
+    dependencies: []
+    files: ["location/", "services/location.*"]
+  
+  payments:
+    name: "In-App Payments"
+    description: "Stripe or platform payment integration"
+    dependencies: ["auth"]
+    files: ["payments/", "services/payments.*"]
+  
+  social-sharing:
+    name: "Social Sharing"
+    description: "Share content to social platforms"
+    dependencies: []
+    files: ["sharing/", "services/sharing.*"]
+  
+  analytics:
+    name: "Analytics"
+    description: "User behavior tracking and analytics"
+    dependencies: []
+    files: ["analytics/", "services/analytics.*"]
+  
+  testing:
+    name: "Testing Suite"
+    description: "Unit, integration, and E2E tests"
+    dependencies: []
+    files: ["__tests__/", "e2e/"]
+
+# State management options
+state_management:
+  react-native:
+    - "Redux Toolkit"
+    - "Zustand"
+    - "Context API"
+    - "Recoil"
+  
+  flutter:
+    - "Bloc/Cubit"
+    - "Provider"
+    - "Riverpod"
+    - "GetX"
+
+# Database options
+databases:
+  local:
+    - "SQLite"
+    - "Realm"
+    - "WatermelonDB"
+    - "AsyncStorage"
+  
+  cloud:
+    - "Firebase Firestore"
+    - "AWS Amplify"
+    - "Supabase"
+    - "GraphQL APIs"
+
+# Deployment and distribution
+deployment:
+  ios:
+    name: "iOS App Store"
+    requirements: ["Apple Developer Account", "Provisioning Profiles"]
+    config_files: ["ios/", "Info.plist"]
+  
+  android:
+    name: "Google Play Store"
+    requirements: ["Google Play Console Account", "Signing Keys"]
+    config_files: ["android/", "build.gradle"]
+  
+  expo:
+    name: "Expo Application Services"
+    requirements: ["Expo Account"]
+    config_files: ["app.json", "eas.json"]
+  
+  firebase:
+    name: "Firebase App Distribution"
+    requirements: ["Firebase Project"]
+    config_files: ["firebase.json"]
+
+# Project structure
+structure:
+  react-native:
+    - "src/"
+    - "src/components/"
+    - "src/screens/"
+    - "src/navigation/"
+    - "src/services/"
+    - "src/hooks/"
+    - "src/utils/"
+    - "src/types/"
+    - "assets/"
+    - "__tests__/"
+    - "package.json"
+  
+  flutter:
+    - "lib/"
+    - "lib/screens/"
+    - "lib/widgets/"
+    - "lib/services/"
+    - "lib/models/"
+    - "lib/utils/"
+    - "assets/"
+    - "test/"
+    - "pubspec.yaml"
+  
+  ios:
+    - "App/"
+    - "App/Views/"
+    - "App/ViewControllers/"
+    - "App/Models/"
+    - "App/Services/"
+    - "App/Utils/"
+    - "Resources/"
+    - "Tests/"
+    - "Project.xcodeproj"
+  
+  android:
+    - "app/src/main/java/"
+    - "app/src/main/java/ui/"
+    - "app/src/main/java/data/"
+    - "app/src/main/java/utils/"
+    - "app/src/main/res/"
+    - "app/src/test/"
+    - "build.gradle"
+
+# Dependencies
+dependencies:
+  react-native:
+    navigation:
+      - "@react-navigation/native"
+      - "@react-navigation/stack"
+      - "@react-navigation/bottom-tabs"
+    auth:
+      - "@react-native-async-storage/async-storage"
+      - "react-native-keychain"
+    ui:
+      - "react-native-elements"
+      - "styled-components"
+      - "react-native-vector-icons"
+    testing:
+      - "jest"
+      - "@testing-library/react-native"
+      - "detox"
+  
+  flutter:
+    navigation:
+      - "go_router"
+      - "auto_route"
+    auth:
+      - "firebase_auth"
+      - "google_sign_in"
+    ui:
+      - "material"
+      - "cupertino_icons"
+    testing:
+      - "flutter_test"
+      - "integration_test"
+
+# Platform-specific configurations
+platform_config:
+  ios:
+    permissions:
+      - "Camera Usage"
+      - "Photo Library Usage"
+      - "Location When In Use"
+      - "Push Notifications"
+    
+    frameworks:
+      - "UIKit"
+      - "SwiftUI"
+      - "Core Data"
+      - "CloudKit"
+  
+  android:
+    permissions:
+      - "CAMERA"
+      - "READ_EXTERNAL_STORAGE"
+      - "ACCESS_FINE_LOCATION"
+      - "RECEIVE_BOOT_COMPLETED"
+    
+    frameworks:
+      - "Jetpack Compose"
+      - "Room Database"
+      - "WorkManager"
+      - "CameraX"
+
+# UI/UX considerations
+ui_patterns:
+  - "Platform-specific design guidelines"
+  - "Responsive layouts for different screen sizes"
+  - "Dark mode support"
+  - "Accessibility compliance"
+  - "Smooth animations and transitions"
+  - "Touch gesture handling"
+  - "Loading states and error handling"
+
+# Performance optimizations
+performance:
+  - "Image optimization and caching"
+  - "Lazy loading for lists"
+  - "Memory management"
+  - "Battery usage optimization"
+  - "Network request optimization"
+  - "Bundle size optimization"
+  - "Startup time optimization"
+
+# Security best practices
+security:
+  - "Secure storage for sensitive data"
+  - "Certificate pinning"
+  - "Code obfuscation"
+  - "API key protection"
+  - "Biometric authentication"
+  - "Data encryption at rest"
+  - "Secure network communication"
+
+# Testing strategies
+testing:
+  unit:
+    - "Component testing"
+    - "Service testing"
+    - "Utility function testing"
+  
+  integration:
+    - "API integration testing"
+    - "Database integration testing"
+    - "Navigation flow testing"
+  
+  e2e:
+    - "User flow testing"
+    - "Cross-platform testing"
+    - "Performance testing"
+
+# Documentation templates
+documentation:
+  - "README.md with setup instructions"
+  - "Platform-specific setup guides"
+  - "API integration documentation"
+  - "UI component documentation"
+  - "Deployment and release process"
+  - "Troubleshooting guide"

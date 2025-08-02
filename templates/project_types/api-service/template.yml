@@ -1,0 +1,259 @@
+name: "API Service"
+description: "RESTful or GraphQL API service with modern architecture"
+category: "backend"
+type: "api-service"
+version: "1.0.0"
+
+# Supported technology stacks
+tech_stacks:
+  fastapi-postgresql:
+    name: "FastAPI + PostgreSQL"
+    language: "python"
+    framework: "fastapi"
+    database: "postgresql"
+    default_features: ["auth", "validation", "documentation", "testing"]
+  
+  express-typescript:
+    name: "Express + TypeScript"
+    language: "typescript"
+    framework: "express"
+    database: "postgresql"
+    default_features: ["auth", "validation", "cors", "testing"]
+  
+  graphql-apollo:
+    name: "GraphQL + Apollo Server"
+    language: "typescript"
+    framework: "apollo-server"
+    database: "postgresql"
+    default_features: ["auth", "graphql-playground", "subscriptions", "testing"]
+  
+  go-gin:
+    name: "Go + Gin"
+    language: "go"
+    framework: "gin"
+    database: "postgresql"
+    default_features: ["auth", "middleware", "validation", "testing"]
+
+# Available features
+features:
+  auth:
+    name: "Authentication & Authorization"
+    description: "JWT-based authentication with role-based access"
+    dependencies: ["database"]
+    files: ["auth/", "middleware/auth.*"]
+  
+  validation:
+    name: "Request Validation"
+    description: "Input validation and sanitization"
+    dependencies: []
+    files: ["validators/", "schemas/"]
+  
+  documentation:
+    name: "API Documentation"
+    description: "Auto-generated API docs (OpenAPI/Swagger)"
+    dependencies: []
+    files: ["docs/", "openapi.json"]
+  
+  rate-limiting:
+    name: "Rate Limiting"
+    description: "API rate limiting and throttling"
+    dependencies: []
+    files: ["middleware/rate-limit.*"]
+  
+  caching:
+    name: "Response Caching"
+    description: "Redis-based response caching"
+    dependencies: []
+    files: ["cache/", "middleware/cache.*"]
+  
+  monitoring:
+    name: "Monitoring & Logging"
+    description: "Application monitoring with metrics"
+    dependencies: []
+    files: ["monitoring/", "middleware/logging.*"]
+  
+  testing:
+    name: "Testing Suite"
+    description: "Unit and integration tests"
+    dependencies: []
+    files: ["tests/", "test_*.py", "*.test.ts"]
+
+# Database options
+databases:
+  postgresql:
+    name: "PostgreSQL"
+    orm: ["prisma", "sqlalchemy", "gorm"]
+    config_files: ["database/", "migrations/"]
+  
+  mongodb:
+    name: "MongoDB"
+    orm: ["mongoose", "motor", "mongo-go-driver"]
+    config_files: ["models/", "schemas/"]
+  
+  redis:
+    name: "Redis"
+    use_case: ["caching", "sessions", "queues"]
+    config_files: ["redis/"]
+
+# Deployment options
+deployment:
+  docker:
+    name: "Docker"
+    config_files: ["Dockerfile", "docker-compose.yml"]
+    
+  aws-lambda:
+    name: "AWS Lambda"
+    config_files: ["serverless.yml", "lambda/"]
+    
+  kubernetes:
+    name: "Kubernetes"
+    config_files: ["k8s/", "helm/"]
+    
+  google-cloud-run:
+    name: "Google Cloud Run"
+    config_files: ["cloudbuild.yaml", ".gcloudignore"]
+
+# Project structure
+structure:
+  fastapi:
+    - "app/"
+    - "app/api/"
+    - "app/core/"
+    - "app/models/"
+    - "app/schemas/"
+    - "app/services/"
+    - "tests/"
+    - "requirements.txt"
+    - "Dockerfile"
+  
+  express:
+    - "src/"
+    - "src/routes/"
+    - "src/controllers/"
+    - "src/middleware/"
+    - "src/models/"
+    - "src/types/"
+    - "src/utils/"
+    - "tests/"
+    - "package.json"
+    - "tsconfig.json"
+  
+  go:
+    - "cmd/"
+    - "internal/"
+    - "pkg/"
+    - "api/"
+    - "configs/"
+    - "docs/"
+    - "tests/"
+    - "go.mod"
+    - "Dockerfile"
+
+# Dependencies
+dependencies:
+  fastapi:
+    base:
+      - "fastapi"
+      - "uvicorn"
+      - "pydantic"
+      - "python-multipart"
+    auth:
+      - "python-jose[cryptography]"
+      - "passlib[bcrypt]"
+    database:
+      - "sqlalchemy"
+      - "psycopg2-binary"
+      - "alembic"
+    testing:
+      - "pytest"
+      - "pytest-asyncio"
+      - "httpx"
+  
+  express:
+    base:
+      - "express"
+      - "cors"
+      - "helmet"
+      - "morgan"
+    auth:
+      - "jsonwebtoken"
+      - "bcryptjs"
+      - "passport"
+    database:
+      - "prisma"
+      - "@prisma/client"
+    testing:
+      - "jest"
+      - "@types/jest"
+      - "supertest"
+  
+  go:
+    base:
+      - "github.com/gin-gonic/gin"
+      - "github.com/spf13/viper"
+    auth:
+      - "github.com/golang-jwt/jwt/v4"
+      - "golang.org/x/crypto/bcrypt"
+    database:
+      - "gorm.io/gorm"
+      - "gorm.io/driver/postgres"
+    testing:
+      - "github.com/stretchr/testify"
+      - "github.com/go-playground/assert/v2"
+
+# API patterns
+api_patterns:
+  rest:
+    endpoints:
+      - "GET /health"
+      - "POST /auth/login"
+      - "POST /auth/register"
+      - "GET /users/me"
+      - "CRUD operations pattern"
+    
+  graphql:
+    schema:
+      - "User type"
+      - "Query resolvers"
+      - "Mutation resolvers"
+      - "Subscription resolvers"
+
+# Security best practices
+security:
+  - "Input validation and sanitization"
+  - "SQL injection prevention"
+  - "CORS configuration"
+  - "Rate limiting"
+  - "Helmet.js security headers"
+  - "Environment variable protection"
+  - "API key authentication"
+  - "JWT token validation"
+
+# Performance optimizations
+performance:
+  - "Database query optimization"
+  - "Response caching"
+  - "Connection pooling"
+  - "Async/await patterns"
+  - "Load balancing ready"
+  - "Memory usage optimization"
+  - "Database indexing"
+
+# Monitoring and observability
+observability:
+  - "Health check endpoints"
+  - "Prometheus metrics"
+  - "Structured logging"
+  - "Error tracking"
+  - "Performance monitoring"
+  - "Database query logging"
+  - "Request/response logging"
+
+# Documentation templates
+documentation:
+  - "README.md with API overview"
+  - "OpenAPI/Swagger specification"
+  - "Authentication guide"
+  - "Deployment instructions"
+  - "API usage examples"
+  - "Error handling guide"

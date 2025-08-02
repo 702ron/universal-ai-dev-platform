@@ -1,0 +1,404 @@
+name: "AI/ML Project"
+description: "Machine Learning and AI projects with modern MLOps practices"
+category: "ai-ml"
+type: "ai-project"
+version: "1.0.0"
+
+# Supported technology stacks
+tech_stacks:
+  pytorch-fastapi:
+    name: "PyTorch + FastAPI"
+    framework: "pytorch"
+    language: "python"
+    api: "fastapi"
+    default_features: ["data-processing", "model-training", "api-endpoints", "monitoring"]
+  
+  tensorflow-flask:
+    name: "TensorFlow + Flask"
+    framework: "tensorflow"
+    language: "python"
+    api: "flask"
+    default_features: ["data-processing", "model-training", "api-endpoints", "visualization"]
+  
+  scikit-streamlit:
+    name: "Scikit-learn + Streamlit"
+    framework: "scikit-learn"
+    language: "python"
+    api: "streamlit"
+    default_features: ["data-analysis", "model-training", "web-app", "visualization"]
+  
+  huggingface-transformers:
+    name: "Hugging Face Transformers"
+    framework: "transformers"
+    language: "python"
+    api: "fastapi"
+    default_features: ["nlp", "model-fine-tuning", "api-endpoints", "inference"]
+
+# Available features
+features:
+  data-processing:
+    name: "Data Processing Pipeline"
+    description: "ETL pipeline for data ingestion and preprocessing"
+    dependencies: []
+    files: ["data/", "preprocessing/", "pipeline/"]
+  
+  model-training:
+    name: "Model Training"
+    description: "Training scripts with experiment tracking"
+    dependencies: ["data-processing"]
+    files: ["training/", "models/", "experiments/"]
+  
+  api-endpoints:
+    name: "API Endpoints"
+    description: "REST API for model inference"
+    dependencies: ["model-training"]
+    files: ["api/", "inference/", "routes/"]
+  
+  monitoring:
+    name: "Model Monitoring"
+    description: "Model performance and drift monitoring"
+    dependencies: ["api-endpoints"]
+    files: ["monitoring/", "metrics/", "alerts/"]
+  
+  mlops:
+    name: "MLOps Pipeline"
+    description: "CI/CD for ML models with automated retraining"
+    dependencies: ["model-training", "monitoring"]
+    files: ["mlops/", ".github/workflows/", "deploy/"]
+  
+  data-visualization:
+    name: "Data Visualization"
+    description: "Interactive dashboards and plots"
+    dependencies: ["data-processing"]
+    files: ["visualization/", "dashboard/", "plots/"]
+  
+  model-versioning:
+    name: "Model Versioning"
+    description: "Model registry and version management"
+    dependencies: ["model-training"]
+    files: ["registry/", "versions/", "artifacts/"]
+  
+  a-b-testing:
+    name: "A/B Testing"
+    description: "Model A/B testing framework"
+    dependencies: ["api-endpoints", "monitoring"]
+    files: ["ab_testing/", "experiments/", "analysis/"]
+  
+  feature-store:
+    name: "Feature Store"
+    description: "Centralized feature management"
+    dependencies: ["data-processing"]
+    files: ["features/", "store/", "serving/"]
+  
+  testing:
+    name: "ML Testing Suite"
+    description: "Data validation, model testing, and integration tests"
+    dependencies: []
+    files: ["tests/", "validation/", "test_data/"]
+
+# ML frameworks and libraries
+frameworks:
+  deep_learning:
+    pytorch:
+      - "torch"
+      - "torchvision"
+      - "pytorch-lightning"
+      - "torchmetrics"
+    
+    tensorflow:
+      - "tensorflow"
+      - "tensorflow-datasets"
+      - "tensorboard"
+      - "keras-tuner"
+    
+    huggingface:
+      - "transformers"
+      - "datasets"
+      - "tokenizers"
+      - "accelerate"
+  
+  traditional_ml:
+    scikit-learn:
+      - "scikit-learn"
+      - "xgboost"
+      - "lightgbm"
+      - "catboost"
+    
+    feature_engineering:
+      - "feature-engine"
+      - "category_encoders"
+      - "imbalanced-learn"
+  
+  data_processing:
+    - "pandas"
+    - "numpy"
+    - "polars"
+    - "dask"
+    - "apache-arrow"
+  
+  visualization:
+    - "matplotlib"
+    - "seaborn"
+    - "plotly"
+    - "bokeh"
+    - "streamlit"
+
+# Data storage options
+data_storage:
+  local:
+    - "Local filesystem"
+    - "SQLite"
+    - "DuckDB"
+    - "Parquet files"
+  
+  cloud:
+    - "AWS S3"
+    - "Google Cloud Storage"
+    - "Azure Blob Storage"
+    - "PostgreSQL"
+    - "MongoDB"
+  
+  data_lakes:
+    - "AWS Lake Formation"
+    - "Google BigQuery"
+    - "Azure Data Lake"
+    - "Databricks"
+
+# Model deployment options
+deployment:
+  cloud_apis:
+    aws:
+      - "SageMaker"
+      - "Lambda"
+      - "ECS"
+      - "Batch"
+    
+    gcp:
+      - "Vertex AI"
+      - "Cloud Run"
+      - "Cloud Functions"
+      - "AI Platform"
+    
+    azure:
+      - "Azure ML"
+      - "Container Instances"
+      - "Functions"
+      - "Kubernetes Service"
+  
+  containerization:
+    - "Docker"
+    - "Kubernetes"
+    - "Docker Compose"
+    - "Helm charts"
+  
+  edge_deployment:
+    - "ONNX Runtime"
+    - "TensorFlow Lite"
+    - "PyTorch Mobile"
+    - "NVIDIA Jetson"
+
+# Project structure
+structure:
+  research:
+    - "notebooks/"
+    - "data/"
+    - "src/"
+    - "experiments/"
+    - "outputs/"
+    - "requirements.txt"
+    - "README.md"
+  
+  production:
+    - "src/"
+    - "src/data/"
+    - "src/models/"
+    - "src/training/"
+    - "src/inference/"
+    - "src/api/"
+    - "src/monitoring/"
+    - "tests/"
+    - "config/"
+    - "docker/"
+    - "deploy/"
+    - "notebooks/"
+    - "requirements.txt"
+    - "Dockerfile"
+
+# Experiment tracking
+experiment_tracking:
+  mlflow:
+    features:
+      - "Experiment logging"
+      - "Model registry"
+      - "Model serving"
+      - "UI dashboard"
+  
+  wandb:
+    features:
+      - "Experiment tracking"
+      - "Hyperparameter optimization"
+      - "Model versioning"
+      - "Collaboration tools"
+  
+  tensorboard:
+    features:
+      - "Scalar logging"
+      - "Image visualization"
+      - "Graph visualization"
+      - "Hyperparameter tuning"
+
+# Data validation
+data_validation:
+  great_expectations:
+    - "Data profiling"
+    - "Expectation suites"
+    - "Data docs"
+    - "Validation actions"
+  
+  evidently:
+    - "Data drift detection"
+    - "Model drift detection"
+    - "Data quality monitoring"
+    - "Interactive reports"
+  
+  pandera:
+    - "Schema validation"
+    - "Hypothesis testing"
+    - "Statistical checks"
+    - "DataFrame validation"
+
+# Model monitoring
+monitoring:
+  performance:
+    - "Accuracy tracking"
+    - "Latency monitoring"
+    - "Throughput metrics"
+    - "Error rate tracking"
+  
+  data_quality:
+    - "Input data validation"
+    - "Feature drift detection"
+    - "Data completeness"
+    - "Outlier detection"
+  
+  model_health:
+    - "Prediction distribution"
+    - "Model confidence"
+    - "Bias detection"
+    - "Fairness metrics"
+
+# MLOps tools
+mlops_tools:
+  orchestration:
+    - "Apache Airflow"
+    - "Prefect"
+    - "Kubeflow"
+    - "MLflow Pipelines"
+  
+  feature_stores:
+    - "Feast"
+    - "Tecton"
+    - "Hopsworks"
+    - "AWS Feature Store"
+  
+  model_serving:
+    - "Seldon Core"
+    - "BentoML"
+    - "Ray Serve"
+    - "TorchServe"
+
+# Security considerations
+security:
+  data_privacy:
+    - "Data anonymization"
+    - "Differential privacy"
+    - "Secure aggregation"
+    - "GDPR compliance"
+  
+  model_security:
+    - "Model encryption"
+    - "Adversarial robustness"
+    - "Input validation"
+    - "Access control"
+  
+  infrastructure:
+    - "VPC configuration"
+    - "IAM policies"
+    - "Secrets management"
+    - "Network security"
+
+# Testing strategies
+testing:
+  data_tests:
+    - "Schema validation"
+    - "Data quality checks"
+    - "Distribution tests"
+    - "Feature tests"
+  
+  model_tests:
+    - "Model performance tests"
+    - "Regression tests"
+    - "Bias tests"
+    - "Robustness tests"
+  
+  integration_tests:
+    - "API endpoint tests"
+    - "Pipeline tests"
+    - "End-to-end tests"
+    - "Load tests"
+
+# Best practices
+best_practices:
+  code_quality:
+    - "Type hints with mypy"
+    - "Code formatting with black"
+    - "Linting with flake8/ruff"
+    - "Pre-commit hooks"
+  
+  reproducibility:
+    - "Environment management"
+    - "Seed setting"
+    - "Version pinning"
+    - "Container images"
+  
+  documentation:
+    - "Docstring standards"
+    - "API documentation"
+    - "Model cards"
+    - "Data sheets"
+  
+  ethics:
+    - "Bias assessment"
+    - "Fairness evaluation"
+    - "Explainability"
+    - "Environmental impact"
+
+# Performance optimization
+performance:
+  training:
+    - "Mixed precision training"
+    - "Gradient accumulation"
+    - "Multi-GPU training"
+    - "Distributed training"
+  
+  inference:
+    - "Model quantization"
+    - "Knowledge distillation"
+    - "Batch inference"
+    - "Caching strategies"
+  
+  data_processing:
+    - "Parallel processing"
+    - "Vectorization"
+    - "Memory optimization"
+    - "Streaming processing"
+
+# Documentation templates
+documentation:
+  - "README.md with project overview"
+  - "Data documentation and schema"
+  - "Model documentation and cards"
+  - "API documentation"
+  - "Deployment and setup guide"
+  - "Experiment tracking guide"
+  - "Contributing guidelines"
